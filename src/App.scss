@@ -1,0 +1,159 @@
+@import url("https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,600;1,700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  background: var(--primary);
+  font-family: "Playpen Sans", cursive;
+  font-size: 1.6rem;
+}
+
+$cellWidth: 8rem;
+
+:root {
+  --primary: #676767;
+  --grey-cell: #8f8f8f;
+  --light-cell: #d9d9d9;
+  --hover-cell: #353030;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  padding: 3rem 1.5rem;
+  gap: 2rem;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+}
+
+.board {
+  width: calc($cellWidth * 8);
+  height: calc($cellWidth * 8);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cell {
+  width: $cellWidth;
+  height: $cellWidth;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #d9d9d9;
+
+  &--active {
+    background: var(--hover-cell) !important;
+  }
+
+  &--visited {
+    background: rgb(173, 50, 50) !important;
+  }
+  img {
+    width: 60%;
+    height: 60%;
+  }
+}
+
+.grey {
+  background: var(--grey-cell);
+}
+.white {
+  background: var(--light-cell);
+}
+
+.add-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font-weight: 700;
+    text-align: center;
+  }
+
+  &__figures {
+    padding-top: 2.4rem;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    padding-top: 8rem;
+    gap: 3rem;
+
+    button {
+      padding: 1rem 1.8rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      border-radius: 1rem;
+      border: none;
+    }
+  }
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-width: 12rem;
+  padding: 1.2rem;
+  border: 0.1rem dashed black;
+
+  img {
+    z-index: -1;
+    width: 60%;
+    height: 60%;
+  }
+
+  &--disable {
+    opacity: 0.3;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  html {
+    font-size: 9px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 8px;
+  }
+}
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 7px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 5px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 4px;
+  }
+}
