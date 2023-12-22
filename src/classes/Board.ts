@@ -128,6 +128,7 @@ export class Board {
 
   public knightTourKrinckl(currentPosition: Cell | null) {
     if (!currentPosition) return false;
+    console.time("Krinckl");
 
     const possibleMoves = [
       { dx: 2, dy: 1 },
@@ -176,6 +177,8 @@ export class Board {
         const { cell } = nextMoves[0];
 
         currentPosition.moveFigure(this.getCell(cell.x, cell.y));
+        console.timeEnd("Krinckl");
+
         return true;
       } else {
         return false;
