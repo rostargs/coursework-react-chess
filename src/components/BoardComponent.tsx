@@ -33,6 +33,7 @@ const BoardComponent: React.FC<IBoardComponent> = ({ board, setBoard }) => {
       }
       const newBoard = new Board();
       newBoard.cells = updatedBoard;
+      selectedFigure === "Knight" ? (newBoard.getCell(x, y).stepNumber = 1) : null;
 
       setBoard(newBoard);
     }

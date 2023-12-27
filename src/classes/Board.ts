@@ -57,7 +57,7 @@ export class Board {
   }
   // Алгоритм реалізований за правилом Варнсдорфа
 
-  public knightTourVarnsdorf(currentKnightPostion: Cell | null) {
+  public knightTourVarnsdorf(currentKnightPostion: Cell | null, step: number) {
     console.time("Varnsdorf");
     if (currentKnightPostion === null) return;
 
@@ -119,14 +119,14 @@ export class Board {
 
     const minPathIndex = findMinimumPathIndex(nextSteps);
 
-    currentKnightPostion.moveFigure(availableMoves[minPathIndex]);
+    currentKnightPostion.moveFigure(availableMoves[minPathIndex], step);
 
     console.timeEnd("Varnsdorf");
 
     return true;
   }
 
-  public knightTourKrinckl(currentPosition: Cell | null) {
+  public knightTourKrinckl(currentPosition: Cell | null, step: number) {
     if (!currentPosition) return false;
     console.time("Krinckl");
 
@@ -176,7 +176,7 @@ export class Board {
       if (nextMoves.length > 0) {
         const { cell } = nextMoves[0];
 
-        currentPosition.moveFigure(this.getCell(cell.x, cell.y));
+        currentPosition.moveFigure(this.getCell(cell.x, cell.y), step);
         console.timeEnd("Krinckl");
 
         return true;

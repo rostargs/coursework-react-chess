@@ -19,6 +19,7 @@ function App() {
   const [startGame, setStartGame] = React.useState<boolean>(false);
   const [makeMoves, setMakeMoves] = React.useState<boolean>(false);
   const [chooseMethod, setChooseMethod] = React.useState<Methods>(Methods.KRINCKL);
+  const [step, setStep] = React.useState<number>(2);
 
   const startNewGame = () => {
     const newBoard = new Board();
@@ -30,11 +31,12 @@ function App() {
     const knight = board.findKnight();
     if (!knight) return;
     let isAnyMoves: boolean | undefined;
+    setStep((prev) => (prev += 1));
 
     if (chooseMethod === Methods.KRINCKL) {
-      isAnyMoves = board.knightTourKrinckl(knight);
+      isAnyMoves = board.knightTourKrinckl(knight, step);
     } else {
-      isAnyMoves = board.knightTourVarnsdorf(knight);
+      isAnyMoves = board.knightTourVarnsdorf(knight, step);
     }
 
     const newBoard = board.copyBoard();

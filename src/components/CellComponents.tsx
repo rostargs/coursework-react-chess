@@ -24,6 +24,7 @@ const CellComponents: React.FC<ICellComponent> = ({ cell, onDrop, onDragOver, on
       {cell.figure && (
         <img draggable={false} src={cell.figure.name === "Pawn" ? Pawn : Knight} alt={cell.figure.name} />
       )}
+      <span>{cell.stepNumber}</span>
     </div>
   );
 };
